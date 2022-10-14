@@ -1,65 +1,70 @@
-<p align="center">
-    <img src="https://raw.githubusercontent.com/Mikheull/wd-tasks/dev/public/images/Weekdev_banner%402x.png" />
-    <h2 align="center">Weekdev #3 | React tasks application with AWS &amp; Firebase</h2>
-</p> 
-<p align="center">By Mikhael Bailly</p>
+# Getting Started with Create React App
 
-[![Build Status](https://travis-ci.org/Mikheull/wd-tasks.svg?branch=dev)](https://travis-ci.org/Mikheull/wd-tasks)
-![GitHub](https://img.shields.io/github/license/Mikheull/wd-tasks)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 🚀 Intro
-Welcome to the third edition of WeekDev 2022. The WeekDev is a challenge that I launched myself, where I develop an idea in maximum 1 week. At the end of this period I would no longer edit the code ! The goal is to improve myself in development and discover new techniques, new languages.
+## Available Scripts
 
-**Task on the cloud**<br>
+In the project directory, you can run:
 
-<DESCRIPTION>
+### `npm start`
 
-## Table of Contents
-1. [Informations](#informations)
-2. [Tasks](#tasks)
-3. [Tools used](#tools-used)
-4. [Installation](#installation)
-5. [Configuration](#configuration)
-6. [Usage](#usage)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Informations
-The challenge began on Friday 14 October 2022 and will be ended on Friday 21 October 2022 ! It aims to bring me knowledge in ReactJS, AWS, Firebase and cloud deployment. During the development, I work on the branch "dev".
+### `npm test`
 
-## Tasks
-I created a Kanban table to reference all my tasks available [here](https://github.com/Mikheull/wd-tasks/projects/1). It will be regularly updated<br>
-Main tasks :
-- 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Tools used
-- ReactJS
-- Firebase
-- Oauth2
-- AWS
+### `npm run build`
 
-## Installation
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Use `git clone` to install this app.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```bash
-git clone https://github.com/Mikheull/wd-tasks
-npm install
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Configuration
+### `npm run eject`
 
-Create a `.env` file in root directory and write the configuration below.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```bash
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## Usage
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-```bash
-npm run dev
-```
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Result
-Here is the result after 1 week :<br>
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
