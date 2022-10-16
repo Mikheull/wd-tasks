@@ -56,13 +56,15 @@ async function login(user) {
 async function getUser(email) {
   const params = {
     TableName: userTable,
-    Key: {
-      "email": {"S": email}, 
+    FilterExpression: "email = :email",
+    ExpressionAttributeValues: {
+      ":email": email,
     }
   }
 
-  return await dynamodb.get(params).promise().then(response => {
-    return response.Item;
+  return await dynamodb.scan(params).promise().then(response => {
+    console.log('response: ', response, params);
+    return response.Items[0];
   }, error => {
     console.log('There is an error getting user: ', error)
   })

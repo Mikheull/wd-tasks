@@ -31,8 +31,9 @@ async function register(userInfo) {
 
     // Encrypt password
     const encryptedPwd = bcrypt.hashSync(password.trim(), 10)
+    const id = uuid.v4();
     const user = {
-      ID: uuid.v4(),
+      ID: id,
       email: email, 
       password: encryptedPwd 
     }
@@ -45,21 +46,21 @@ async function register(userInfo) {
       });
     }
     
-    return utils.buildResponse(200, {email: email})
+    return utils.buildResponse(200, {email: email, ID: id})
 }
 
 
 async function getUser(email) {
   const params = {
     TableName: userTable,
-    Key: {
-      "email": {"S": email}, 
+    FilterExpression: "email = :email",
+    ExpressionAttributeValues: {
+      ":email": email,
     }
   }
 
-  return await dynamodb.get(params).promise().then(response => {
-    console.log("GetUser response item : ", response.Item)
-    return response.Item;
+  return await dynamodb.scan(params).promise().then(response => {
+    return response.Items[0];
   }, error => {
     console.log('There is an error getting user: ', error)
   })
