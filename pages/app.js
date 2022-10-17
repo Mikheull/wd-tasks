@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import Head from 'next/head'
+import Image from 'next/image'
 
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
+import Todo from '../components/todo'
 
 export default function AppHome() {
 
@@ -16,12 +17,19 @@ export default function AppHome() {
         </Head>
 
         <Navbar />
-
-        <main className={styles.main}>
-          
-            App
-            
-        </main>
+        <Todo />
+       
+       
+        <footer className={styles.footer}>
+          <a
+            rel="noopener noreferrer"
+          >
+            Powered by{' '}
+            <span className={styles.logo}>
+              <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            </span>
+          </a>
+        </footer>
       </div>
     </>
   )

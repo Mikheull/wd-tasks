@@ -13,20 +13,20 @@ const links = [
         {
           key: 'product_A',
           name: 'Product A',
-          link: '/'
+          link: '#'
         },
         {
           key: 'product_B',
           name: 'Product B',
-          link: '/'
+          link: '#'
         },
         {
           key: 'product_C',
           name: 'Product C',
-          link: '/'
+          link: '#'
         },
       ],
-      link: '/'
+      link: '#'
   },
   {
       key: 'features',
@@ -35,30 +35,30 @@ const links = [
         {
           key: 'features_A',
           name: 'Features A',
-          link: '/'
+          link: '#'
         },
         {
           key: 'features_B',
           name: 'Features B',
-          link: '/'
+          link: '#'
         },
         {
           key: 'features_C',
           name: 'Features C',
-          link: '/'
+          link: '#'
         },
       ],
-      link: '/'
+      link: '#'
   },
   {
       key: 'pricing',
       name: 'Pricing',
-      link: '/'
+      link: '#'
   },
   {
       key: 'resources',
       name: 'Resources',
-      link: '/'
+      link: '#'
   }
 ];
 
@@ -71,6 +71,7 @@ const Navbar = () => {
     localStorage.removeItem('token');
     Router.push('/login')
   }
+
   return (
     <>
       <nav className="max-w-7xl md:px-4 flex relative justify-between items-center mx-auto h-24 z-10">
@@ -86,10 +87,10 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex flex-shrink flex-grow-0 justify-start px-2 gap-8">
+        <div className="hidden md:flex flex-shrink flex-grow-0 justify-start px-2 gap-12">
           {links.map((item, i) => (
             <Link key={i} href={item.link} passHref>
-              <a className={`text-white text-sm ${(item.sub) ? "is_sub" : ''}`}>{item.name}</a>
+              <a className={`text-white text-md ${(item.sub) ? "is_sub" : ''}`}>{item.name}</a>
             </Link>
           ))}
         </div>
@@ -113,7 +114,7 @@ const Navbar = () => {
                     <Link href="app" passHref>
                       <a className="text-white text-sm">App</a>
                     </Link>
-                    <a className="text-white text-sm" onClick={logoutHandler}>Log out</a>
+                    <a className="text-white text-sm cursor-pointer" onClick={logoutHandler}>Log out</a>
                   </>
               }
             </div>
