@@ -15,7 +15,7 @@ async function updateTask(id, task) {
     const name = task.name;
     
     // Verify required parameteres
-    if(!id || !status || !token || !name){
+    if(!id || !token || !name){
       return utils.buildResponse(401, {
         message: 'All fields are required'
       });
@@ -31,10 +31,10 @@ async function updateTask(id, task) {
     // Update task to dynamoDB
     const _task = {
       name: name,
-      status: status,
+      status: (status) ? true : false,
     }
 
-    const updateTaskResponse = await updateTaskContent(id, task, userID);
+    const updateTaskResponse = await updateTaskContent(id, _task, userID);
     if(!updateTaskResponse){
       return utils.buildResponse(503, {
         message: 'Server error. Please try again later !'
