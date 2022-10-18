@@ -39,7 +39,8 @@ async function login(user) {
     // Generate JWT token
     const userInfo = {
       ID: dynamoUser.ID,
-      email: dynamoUser.email
+      email: dynamoUser.email,
+      username: dynamoUser.username
     }
     const token = auth.generateToken(userInfo);
  
@@ -63,7 +64,6 @@ async function getUser(email) {
   }
 
   return await dynamodb.scan(params).promise().then(response => {
-    console.log('response: ', response, params);
     return response.Items[0];
   }, error => {
     console.log('There is an error getting user: ', error)

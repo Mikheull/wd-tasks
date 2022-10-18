@@ -13,9 +13,10 @@ const userTable = 'wd-tasks-users';
 async function register(userInfo) {
     const email = userInfo.email;
     const password = userInfo.password;
+    const username = userInfo.username;
     
     // Verify required parameteres
-    if(!email || !password){
+    if(!email || !password || !username){
         return utils.buildResponse(401, {
             message: 'All fields are required'
         });
@@ -35,6 +36,7 @@ async function register(userInfo) {
     const user = {
       ID: id,
       email: email, 
+      username: username, 
       password: encryptedPwd 
     }
 
