@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Mikheull/wd-tasks/dev/public/images/Weekdev_banner%402x.png" />
+    <h2 align="center">Weekdev #3 | NextJS tasks application with AWS</h2>
+</p> 
+<p align="center">By Mikhael Bailly</p>
 
-## Getting Started
+[![Build Status](https://travis-ci.org/Mikheull/wd-tasks.svg?branch=dev)](https://travis-ci.org/Mikheull/wd-tasks)
+![GitHub](https://img.shields.io/github/license/Mikheull/wd-tasks)
 
-First, run the development server:
+## 🚀 Intro
+Welcome to the third edition of WeekDev 2022. The WeekDev is a challenge that I launched myself, where I develop an idea in maximum 1 week. At the end of this period I would no longer edit the code ! The goal is to improve myself in development and discover new techniques, new languages.
+
+**Task on the cloud**<br>
+
+<DESCRIPTION>
+
+## Table of Contents
+- [🚀 Intro](#-intro)
+- [Table of Contents](#table-of-contents)
+- [Informations](#informations)
+- [Tasks](#tasks)
+- [Tools used](#tools-used)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Result](#result)
+
+
+## Informations
+The challenge began on Friday 14 October 2022 and will be ended on Friday 21 October 2022 ! It aims to bring me knowledge in NextJS, AWS and cloud deployment. During the development, I work on the branch "dev".
+
+## Tasks
+I created a Kanban table to reference all my tasks available [here](https://github.com/users/Mikheull/projects/1/views/1). It will be regularly updated<br>
+Main tasks :
+- 
+
+## Tools used
+- NextJS
+- Oauth2
+- AWS
+
+## Installation
+
+Use `git clone` to install this app.
+
+```bash
+git clone https://github.com/Mikheull/wd-tasks
+npm install
+```
+
+## Configuration
+
+Create a `.env` file in root directory and write the configuration below.
+
+```bash
+NEXT_PUBLIC_API_GATEWAY_URL=
+NEXT_PUBLIC_API_KEY=
+
+```
+
+## Usage
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Result
+Here is the result after 1 week :<br>
