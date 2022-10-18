@@ -28,6 +28,14 @@ async function updateTask(id, task) {
     }
     const userID = verification.userId;
     
+    // Verify the task owner
+    const dynamoTask = await getTaskByUserID(id, userID);
+    if(!dynamoTask){
+      return utils.buildResponse(403, {
+        message: 'Task does not exist !'
+      });
+    }
+
     // Update task to dynamoDB
     const _task = {
       name: name,
@@ -44,12 +52,28 @@ async function updateTask(id, task) {
     return utils.buildResponse(200, {updated: true})
 }
 
-async function updateTaskContent(id, task, userID) {
+async function getTaskByUserID(id, userID) {
+  const params = {
+    TableName: itemTable,
+    FilterExpression: "ID = :id AND userId = :userID",
+    ExpressionAttributeValues: {
+      ":id": id,
+      ":userID": userID,
+    }
+  }
+
+  return await dynamodb.scan(params).promise().then(response => {
+    return response.Items[0];
+  }, error => {
+    console.log('There is an error getting task: ', error)
+  })
+}
+
+async function updateTaskContent(id, task) {
   const params = {
     TableName: itemTable,
     Key: {
         ID: id,
-        // userId: userID,
     },
     UpdateExpression: "set #Name = :name, #Status = :status",
     ExpressionAttributeNames: {

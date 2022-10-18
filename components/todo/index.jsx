@@ -167,7 +167,7 @@ const Todo = () => {
                 <TodoItem key={i} item={item} deleteHandler={deleteHandler} statusHandler={statusHandler} />
             )) : ''
         }
-      };
+    };
 
     return (
         <>

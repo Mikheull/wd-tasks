@@ -25,7 +25,15 @@ async function deleteTask(id, queryparams) {
       return utils.buildResponse(401, verification)
     }
     const userID = verification.userId;
-    
+
+    // Verify the task owner
+    const _dynamoTask = await getTaskByUserID(id, userID);
+    if(!_dynamoTask){
+      return utils.buildResponse(403, {
+        message: 'Task does not exist !'
+      });
+    }
+
     // Delete task to dynamoDB
     const dynamoTask = await deleteTaskByID(id, userID);
     if(!dynamoTask){
@@ -37,14 +45,30 @@ async function deleteTask(id, queryparams) {
     return utils.buildResponse(200, {deletion: dynamoTask})
 }
 
+async function getTaskByUserID(id, userID) {
+  const params = {
+    TableName: itemTable,
+    FilterExpression: "ID = :id AND userId = :userID",
+    ExpressionAttributeValues: {
+      ":id": id,
+      ":userID": userID,
+    }
+  }
+
+  return await dynamodb.scan(params).promise().then(response => {
+    return response.Items[0];
+  }, error => {
+    console.log('There is an error getting task: ', error)
+  })
+}
+
+
 async function deleteTaskByID(id, userID) {
   const params = {
     TableName: itemTable,
     Key: {
       ID: id,
-      //userId: userID,
     },
-
   }
 
   return await dynamodb.delete(params).promise().then(response => {
