@@ -1,11 +1,8 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Mikheull/wd-tasks/dev/public/images/Weekdev_banner%402x.png" />
-    <h2 align="center">Weekdev #3 | NextJS tasks application with AWS</h2>
+    <img src="https://raw.githubusercontent.com/Mikheull/wd-tasks/master/public/banner/aws.png" />
+    <h2 align="center">Weekdev #3 | NextJS tasks application with Amazon Web Services</h2>
 </p> 
 <p align="center">By Mikhael Bailly</p>
-
-[![Build Status](https://travis-ci.org/Mikheull/wd-tasks.svg?branch=dev)](https://travis-ci.org/Mikheull/wd-tasks)
-![GitHub](https://img.shields.io/github/license/Mikheull/wd-tasks)
 
 ## 🚀 Intro
 Welcome to the third edition of WeekDev 2022. The WeekDev is a challenge that I launched myself, where I develop an idea in maximum 1 week. At the end of this period I would no longer edit the code ! The goal is to improve myself in development and discover new techniques, new languages.
@@ -32,12 +29,21 @@ The challenge began on Friday 14 October 2022 and will be ended on Friday 21 Oct
 ## Tasks
 I created a Kanban table to reference all my tasks available [here](https://github.com/users/Mikheull/projects/1/views/1). It will be regularly updated<br>
 Main tasks :
-- 
+- Create NextJS App
+- Create DynamoDB
+- User related methods
+- Task related methods
+- Deployment on Amplify
 
 ## Tools used
 - NextJS
-- Oauth2
-- AWS
+- AWS Lambda
+- AWS API Gateway
+- AWS Dynamo DB
+- AWS Amplify
+- AWS CloudWatch
+- AWS S3
+- AWS IAM
 
 ## Installation
 
@@ -50,13 +56,16 @@ npm install
 
 ## Configuration
 
-Create a `.env` file in root directory and write the configuration below.
-
+1) Create two DynamoDb tables **wd-tasks-items** and **wd-tasks-users**
+2) Create the lambda functions available in the folder `AWS/lambda` with the roles
+3) Create a API Gateway with the roles linked to lambda functions
+4) Create a `.env` file in root directory and write the configuration below.
 ```bash
 NEXT_PUBLIC_API_GATEWAY_URL=
 NEXT_PUBLIC_API_KEY=
-
 ```
+5) [OPTIONAL] Delete the `amplify` folder and re-init amplify
+6) [OPTIONAL] Deploy to amplify
 
 ## Usage
 
