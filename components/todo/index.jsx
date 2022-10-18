@@ -17,21 +17,24 @@ const Todo = () => {
         const token = localStorage.getItem('token');
         const getTasksUrl = `${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/tasks`;
       
-        const requestConfg = {
-            headers: {
-            'x-api-key': process.env.NEXT_PUBLIC_API_KEY
+        if(verifiedtoken){
+            const requestConfg = {
+                headers: {
+                'x-api-key': process.env.NEXT_PUBLIC_API_KEY
+                }
             }
+            const requestBody = {
+                token: token
+            }
+    
+            axios.post(getTasksUrl, requestBody, requestConfg).then(response => {
+                setTasks(response.data.tasks)
+            }).catch(error => {
+                console.log(error)
+            })
         }
-        const requestBody = {
-            token: token
-        }
-
-        axios.post(getTasksUrl, requestBody, requestConfg).then(response => {
-            setTasks(response.data.tasks)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [])
+        
+    }, [verifiedtoken])
 
     const deleteHandler = (id) => {
 

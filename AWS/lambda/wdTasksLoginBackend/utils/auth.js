@@ -7,10 +7,11 @@ function generateToken(user){
 
     const userInfo = {
         id: user.ID,
-        email: user.email
+        email: user.email,
+        user: user.username
     }
 
-    return jwt.sign(userInfo, process.env.JWT_SECRET, { expiresIn: '1h'})
+    return jwt.sign(userInfo, process.env.JWT_SECRET, { expiresIn: '12h'})
 }
 
 

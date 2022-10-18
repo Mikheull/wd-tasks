@@ -9,13 +9,14 @@ const TodoItem = ({item, deleteHandler, statusHandler}) => {
                 {item.status ? 
                     <>
                         <button className="text-blue-500" onClick={() => statusHandler(item.ID, item)}><CheckCircle height={16} /></button>
+                        <p className="ml-4 text-gray-400 line-through">{item.name}</p>
                     </> 
                 : 
                     <>
                         <button className="text-gray-400" onClick={() => statusHandler(item.ID, item)}><Circle height={16} /></button>
+                        <p className="ml-4 text-gray-400">{item.name}</p>
                     </>
                 }
-                <p className="ml-4 text-gray-400">{item.name}</p>
             </div>
             
             <a className="text-sm cursor-pointer w-2/12 text-red-400 opacity-0 group-hover:opacity-100 ease-in-out duration-200 flex justify-end" onClick={() => deleteHandler(item.ID)}><Trash height={16} /></a>

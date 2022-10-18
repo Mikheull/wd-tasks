@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
 import Router from 'next/router'
 import toast from 'react-hot-toast';
+import { LogOut } from 'react-feather';
 
 import { getUser, verifyToken } from '../hooks/useLocalStorage'
 
@@ -102,27 +102,28 @@ const Navbar = () => {
 
         <div className="hidden md:flex flex-initial">
           <div className="flex justify-end items-center relative">
-            <div className="flex mr-4 items-center gap-8">
-              {
-                (!user || !user.ID || !verifiedtoken) ?
-                  <>
-                    <Link href="login" passHref>
-                      <a className="text-white text-sm">Log in</a>
-                    </Link>
+            {
+              (!user || !user.ID || !verifiedtoken) ?
+                <div className="flex mr-4 items-center gap-8">
+                  <Link href="login" passHref>
+                    <a className="text-white text-sm">Log in</a>
+                  </Link>
 
-                    <Link href="signup" passHref>
-                      <a className="text-white font-bold text-sm bg-gradient-to-b from-[#4D13C0] to-[#2D0885] px-6 py-3 rounded-md">Sign up</a>
-                    </Link>
-                  </>
-                :
-                  <>
-                    <Link href="app" passHref>
-                      <a className="text-white text-sm">App</a>
-                    </Link>
-                    <a className="text-white text-sm cursor-pointer" onClick={logoutHandler}>Log out</a>
-                  </>
-              }
-            </div>
+                  <Link href="signup" passHref>
+                    <a className="tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 font-bold text-sm px-4 py-2">Sign up</a>
+                  </Link>
+                </div>
+              :
+                <div className="flex mr-4 items-center gap-4">
+                  <Link href="app" passHref>
+                    <a className="text-white text-sm">App</a>
+                  </Link>
+                  <Link href="profile" passHref>
+                    <a className="text-white text-sm">Profile</a>
+                  </Link>
+                  <a className="text-white text-sm cursor-pointer" onClick={logoutHandler}><LogOut height={16} /></a>
+                </div>
+            }
           </div>
         </div>
       </nav>
