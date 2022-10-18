@@ -78,12 +78,12 @@ export default function Signup() {
                     <div className="mt-8">
                         <form onSubmit={handleSubmit(onSubmit)}>
                           <div>
-                              <label htmlFor="username" className="block mb-2 text-smtext-gray-200">Username</label>
+                              <label htmlFor="username" className="block mb-2 text-sm text-gray-200">Username</label>
                               <input {...register("username")} placeholder="johnDoe" type="text" name="username" id="username" className="block w-full px-4 py-2 mt-2 border rounded-md placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"/>
                           </div>
 
                           <div className="mt-6">
-                              <label htmlFor="email" className="block mb-2 text-smtext-gray-200">Email Address</label>
+                              <label htmlFor="email" className="block mb-2 text-sm text-gray-200">Email Address</label>
                               <input {...register("email")} placeholder="example@example.com" type="email" name="email" id="email" className="block w-full px-4 py-2 mt-2 border rounded-md placeholder-gray-600 bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"/>
                           </div>
 
