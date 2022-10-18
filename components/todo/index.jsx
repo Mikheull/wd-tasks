@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
+import toast from 'react-hot-toast';
 
 import { verifyToken } from '../../hooks/useLocalStorage'
 import TodoItem from './item'
@@ -48,9 +49,16 @@ const Todo = () => {
                 if(response.data.deletion){
                     const remainingTasks = tasks.filter(task => task.ID !== id);
                     setTasks(remainingTasks);
+                    toast.success('The task has been deleted', {
+                        duration: 2000,
+                        position: 'top-center',
+                    });
                 }
             }).catch(error => {
-                console.log(error)
+                toast.error('The task has not been deleted', {
+                    duration: 2000,
+                    position: 'top-center',
+                });
             })
         }
        
@@ -84,7 +92,7 @@ const Todo = () => {
 
                 setTasks(newArr);
             }).catch(error => {
-                console.log(error)
+                // console.log(error)
             })
         }
        
@@ -109,14 +117,27 @@ const Todo = () => {
             if(data.task || data.task !== '' || token){
                 axios.post(createTaskUrl, requestBody, requestConfg).then(response => {
                     setTasks([...tasks, { ID: response.data.task.ID, name: response.data.task.name, status: response.data.task.status, userId: response.data.task.userId }]);
+                    toast.success('The task has been created', {
+                        duration: 2000,
+                        position: 'top-center',
+                    });
                 }).catch(error => {
-                    console.log(error);
+                    toast.error('The task has not been created', {
+                        duration: 2000,
+                        position: 'top-center',
+                    });
                 })
             }else{
-                console.log('All fields are required !');
+                toast.error('All fields are required !', {
+                    duration: 2000,
+                    position: 'top-center',
+                });
             }
         }else{
-            console.log('Token not found !');
+            toast.error('Token not found !', {
+                duration: 2000,
+                position: 'top-center',
+            });
         }
     }
 
@@ -150,7 +171,6 @@ const Todo = () => {
             <div className="max-w-7xl md:px-4 mt-10 mx-auto">
                 <TodoFilter filterHandler={filterHandler} type={filter} tasks={tasks} />
                 <TodoCreate createHandler={createHandler} />
-                
                 {renderItem()}
             </div>
         </>

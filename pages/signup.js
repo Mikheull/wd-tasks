@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Head from 'next/head'
+import toast from 'react-hot-toast';
 
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
@@ -10,7 +10,6 @@ const registerUrl = `${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/register`;
 
 export default function Signup() {
   const { register, handleSubmit } = useForm();
-  const [message, setMessage] = useState("");
 
   const onSubmit = data => {
     const requestConfg = {
@@ -25,16 +24,28 @@ export default function Signup() {
 
     if(data.email || data.password){
       axios.post(registerUrl, requestBody, requestConfg).then(response => {
-        setMessage('Registration Successful')
+        toast.success('Successfully registered', {
+          duration: 2000,
+          position: 'top-center',
+        });
       }).catch(error => {
         if(error.response.status === 401){
-          setMessage(error.response.data.message);
+          toast.error(error.response.data.message, {
+            duration: 2000,
+            position: 'top-center',
+          });
         }else{
-          setMessage('sorry... the backend server is down! please try again later');
+          toast.error("sorry... the backend server is down! please try again later", {
+            duration: 2000,
+            position: 'top-center',
+          });
         }
       })
     }else{
-      setMessage('All fields are required !');
+      toast.error("All fields are required !", {
+        duration: 2000,
+        position: 'top-center',
+      });
     }
   };
 
@@ -55,20 +66,17 @@ export default function Signup() {
           <div className="py-12 px-12 bg-[#10173C] rounded-2xl shadow-xl z-20">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <h1 className="text-3xl font-bold text-center mb-4 text-white">Create An Account</h1>
-                <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-300 tracking-wide">Create an
-                  account to enjoy all the services without any ads for free!</p>
+                <h1 className="text-3xl mb-8 font-bold text-center text-white">Create an Account</h1>
               </div>
               
               <div className="space-y-4">
-                <input {...register("email")} placeholder="Email Addres" type="text" className="block text-sm py-3 px-4 rounded-lg w-full border outline-none"/>
-                <input {...register("password")} placeholder="Password" type="password" className="block text-sm py-3 px-4 rounded-lg w-full border outline-none"/>
+                <input {...register("email")} placeholder="Email Address" type="text" className="block bg-transparent border-gray-700 text-sm py-3 px-4 rounded-lg w-full border outline-none"/>
+                <input {...register("password")} placeholder="Password" type="password" className="block bg-transparent border-gray-700 text-sm py-3 px-4 rounded-lg w-full border outline-none"/>
               </div>
 
               <div className="text-center mt-6">
-                <button type="submit" className="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Create Account</button>
-                <p className="mt-4 text-sm text-black">Already Have An Account? <span className="underline cursor-pointer"> Sign In</span></p>
-                <p>{message}</p>
+                <button type="submit" className="text-white font-bold text-sm bg-gradient-to-b from-[#4D13C0] to-[#2D0885] px-6 py-3 rounded-md">Create Account</button>
+                <p className="mt-4 text-sm text-gray-500">Already have an account ? <a href="/login" className="underline cursor-pointer"> Sign In</a></p>
               </div>
             </form>
           </div>

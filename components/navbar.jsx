@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
 import Router from 'next/router'
+import toast from 'react-hot-toast';
 
 import { getUser, verifyToken } from '../hooks/useLocalStorage'
 
@@ -69,6 +70,10 @@ const Navbar = () => {
   const logoutHandler = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    toast.success('Successfully disconnected', {
+      duration: 2000,
+      position: 'top-center',
+    });
     Router.push('/login')
   }
 
