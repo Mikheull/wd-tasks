@@ -65,7 +65,7 @@ export default function Signup() {
       
       <div className="bg-gray-900">
         <div className="flex justify-center h-screen">
-            <div className="hidden bg-cover lg:block lg:w-2/5" style={{backgroundImage : 'url(./michael-dam-mEZ3PoFGs_k-unsplash.jpg)'}}>
+            <div className="hidden bg-cover lg:block lg:w-2/5" style={{backgroundImage : 'url(./images/michael-dam-mEZ3PoFGs_k-unsplash.jpg)'}}>
                 <div className="flex items-end pb-6 h-full px-20 bg-gray-900 bg-opacity-40">
                     <div>
                       <p className="max-w-xl mt-3 text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>

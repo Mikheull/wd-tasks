@@ -110,7 +110,7 @@ export default function Signup() {
                 </div>
             </div>
 
-            <div className="hidden bg-cover lg:block lg:w-3/5" style={{backgroundImage : 'url(./adolfo-felix-Yi9-QIObQ1o-unsplash.jpg)'}}>
+            <div className="hidden bg-cover lg:block lg:w-3/5" style={{backgroundImage : 'url(./images/adolfo-felix-Yi9-QIObQ1o-unsplash.jpg)'}}>
                 <div className="flex items-end pb-6 h-full px-20 bg-gray-900 bg-opacity-40">
                     <div className="mx-auto">
                       <p className="max-w-xl mt-3 text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>

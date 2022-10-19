@@ -105,21 +105,23 @@ const Todo = () => {
         const token = localStorage.getItem('token');
         const createTaskUrl = `${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/task`;
 
+
         if(token){
             const requestConfg = {
                 headers: {
                     'x-api-key': process.env.NEXT_PUBLIC_API_KEY
                 }
             }
-
-            const requestBody = {
-                name: data.task,
-                token: token
-            }
         
-            if(data.task || data.task !== '' || token){
+            if(data.task && data.task !== '' && token){
+                const requestBody = {
+                    name: data.task,
+                    token: token
+                }
+                
                 axios.post(createTaskUrl, requestBody, requestConfg).then(response => {
-                    setTasks([...tasks, { ID: response.data.task.ID, name: response.data.task.name, status: response.data.task.status, userId: response.data.task.userId }]);
+                    setTasks([{ ID: response.data.task.ID, name: response.data.task.name, status: response.data.task.status, userId: response.data.task.userId }, ...tasks]);
+                    
                     toast.success('The task has been created', {
                         duration: 2000,
                         position: 'top-center',
@@ -171,7 +173,7 @@ const Todo = () => {
 
     return (
         <>
-            <div className="max-w-7xl md:px-4 mt-10 mx-auto">
+            <div className="max-w-7xl md:px-4 mt-10 mx-auto min-h-screen">
                 <TodoFilter filterHandler={filterHandler} type={filter} tasks={tasks} />
                 <TodoCreate createHandler={createHandler} />
                 {renderItem()}
