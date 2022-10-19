@@ -34,6 +34,7 @@ Main tasks :
 - User related methods
 - Task related methods
 - Deployment on Amplify
+- Upload images (Url, Locally, Unsplash)
 
 ## Tools used
 - NextJS
@@ -44,6 +45,7 @@ Main tasks :
 - AWS CloudWatch
 - AWS S3
 - AWS IAM
+- Unsplash API
 
 ## Installation
 
@@ -58,14 +60,21 @@ npm install
 
 1) Create two DynamoDb tables **wd-tasks-items** and **wd-tasks-users**
 2) Create the lambda functions available in the folder `AWS/lambda` with the roles
-3) Create a API Gateway with the roles linked to lambda functions
-4) Create a `.env` file in root directory and write the configuration below.
+3) Create an API Gateway with the roles linked to lambda functions
+4) Create a S3
+5) Create a Unsplash App
+6) Create a `.env` file in root directory and write the configuration below.
 ```bash
 NEXT_PUBLIC_API_GATEWAY_URL=
 NEXT_PUBLIC_API_KEY=
+S3_UPLOAD_KEY=
+S3_UPLOAD_SECRET=
+S3_UPLOAD_BUCKET=
+S3_UPLOAD_REGION=
+NEXT_UNSPLASH_KEY=
 ```
-5) [OPTIONAL] Delete the `amplify` folder and re-init amplify
-6) [OPTIONAL] Deploy to amplify
+7) [OPTIONAL] Delete the `amplify` folder and re-init amplify
+8) [OPTIONAL] Deploy to amplify
 
 ## Usage
 
