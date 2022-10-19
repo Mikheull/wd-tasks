@@ -121,7 +121,7 @@ const Navbar = () => {
                   <Link href="profile" passHref>
                     <a className="text-white text-sm flex items-center gap-2">
                       Profile
-                      <img class="h-6 w-6 rounded-full" src={user.attachmentUrl ? user.attachmentUrl : '../images/avatar.jpg'}/>
+                      <img className="h-6 w-6 rounded-full" src={user.attachmentUrl ? user.attachmentUrl : '../images/avatar.jpg'}/>
                     </a>
                   </Link>
                   <a className="text-white text-sm cursor-pointer" onClick={logoutHandler}><LogOut height={16} /></a>
