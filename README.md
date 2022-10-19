@@ -85,3 +85,4 @@ npm run dev
 
 ## Result
 Here is the result after 1 week :<br>
+<img src="https://raw.githubusercontent.com/Mikheull/wd-tasks/master/public/result.gif">
