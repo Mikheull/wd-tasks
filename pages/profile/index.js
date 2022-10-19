@@ -111,6 +111,50 @@ export default function Profile() {
    
   }
 
+  const editAvatarHandler = (data) => {
+
+    if(verifiedtoken){
+      const token = localStorage.getItem('token');
+      const updateAvatardUrl = `${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/profile/avatar`;
+
+      const requestConfg = {
+          headers: {
+              'x-api-key': process.env.NEXT_PUBLIC_API_KEY
+          }
+      }
+
+      const requestBody = {
+        attachmentUrl: data.attachmentUrl,
+        token: token
+      }
+
+      axios.post(updateAvatardUrl, requestBody, requestConfg).then(response => {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        localStorage.setItem('token', response.data.token);
+
+        toast.success('Avatar edited', {
+          duration: 2000,
+          position: 'top-center',
+        });
+      }).catch(error => {
+        console.log(error)
+        if(error.response && (error.response.status === 401 || error.response.status === 403)){
+          toast.error(error.response.data.message, {
+            duration: 2000,
+            position: 'top-center',
+          });
+        }else{
+          toast.error("sorry... the backend server is down! please try again later", {
+            duration: 2000,
+            position: 'top-center',
+          });
+        }
+      })
+
+    }
+   
+  }
+
   return (
     <>
       <div className='bg-gray-900 w-full px-6 mx-auto'>
@@ -123,8 +167,8 @@ export default function Profile() {
         <Navbar />
 
         <ProfileEdit data={user} editHandler={editProfileHandler} />
+        <AvatarEdit data={user} editAvatarHandler={editAvatarHandler} />
         <PasswordEdit editPassHandler={editPasswordHandler} />
-        {/* <AvatarEdit /> */}
 
         <Footer />
       </div>

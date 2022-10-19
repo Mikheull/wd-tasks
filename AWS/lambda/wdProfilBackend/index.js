@@ -1,5 +1,6 @@
 const updateProfileService = require('./services/updateProfile');
 const updatePassService = require('./services/updatePass');
+const updateAvatarService = require('./services/updateAvatar');
 const utils = require('./utils/utils');
 
 exports.handler = async (event) => {
@@ -13,6 +14,10 @@ exports.handler = async (event) => {
         case event.httpMethod === 'POST' && event.path === "/profile/password":
             const updatePassBody = JSON.parse(event.body);
             response = await updatePassService.updatePass(updatePassBody);
+            break;
+        case event.httpMethod === 'POST' && event.path === "/profile/avatar":
+            const updateAvatarBody = JSON.parse(event.body);
+            response = await updateAvatarService.updateAvatar(updateAvatarBody);
             break;
             
         default:

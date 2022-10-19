@@ -9,13 +9,12 @@ const auth = require('../utils/auth');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const userTable = 'wd-tasks-users';
 
-async function updateProfile(profile) {
-    const token = profile.token;
-    const username = profile.username;
-    const email = profile.email;
+async function updateAvatar(data) {
+    const token = data.token;
+    const attachmentUrl = data.attachmentUrl;
     
     // Verify required parameteres
-    if(!token || !username || !email){
+    if(!token){
       return utils.buildResponse(401, {
         message: 'All fields are required'
       });
@@ -27,23 +26,23 @@ async function updateProfile(profile) {
       return utils.buildResponse(401, verification)
     }
     const userID = verification.userId;
-    
-    // Get user exist
+
+     // Get user exist
     const dynamoUser = await getUser(userID);
     if(!dynamoUser || !dynamoUser.email){
-        return utils.buildResponse(403, {
-          message: 'Email does not exist !'
-        });
+       return utils.buildResponse(403, {
+         message: 'Email does not exist !'
+       });
+    }
+ 
+   
+    // Update user avatar to dynamoDB
+    const _avatarUrl = {
+        attachmentUrl: attachmentUrl,
     }
 
-    // Update profile to dynamoDB
-    const _profile = {
-      username: username,
-      email: email,
-    }
-
-    const updateProfileResponse = await updateProfileContent(userID, _profile);
-    if(!updateProfileResponse){
+    const updateAvatarResponse = await updateAvatarContent(userID, _avatarUrl);
+    if(!updateAvatarResponse){
       return utils.buildResponse(503, {
         message: 'Server error. Please try again later !'
       });
@@ -51,22 +50,23 @@ async function updateProfile(profile) {
 
     // ReGenerate JWT token
     const userInfo = {
-      ID: userID,
-      email: email,
-      attachmentUrl: dynamoUser.attachmentUrl,
-      username: username
+        ID: userID,
+        attachmentUrl: attachmentUrl,
+        email: dynamoUser.email,
+        username: dynamoUser.username
     }
     const newtoken = auth.generateToken(userInfo);
- 
+   
     // Send response to client
     const response = utils.buildResponse(200, {
-      user: userInfo,
-      updated: true,
-      token: newtoken
+        user: userInfo,
+        updated: true,
+        token: newtoken
     })
-     
+       
     return response
 }
+
 
 async function getUser(userID) {
   const params = {
@@ -84,28 +84,26 @@ async function getUser(userID) {
   })
 }
 
-async function updateProfileContent(id, profile) {
+async function updateAvatarContent(id, profile) {
   const params = {
     TableName: userTable,
     Key: {
         ID: id,
     },
-    UpdateExpression: "set #Username = :username, #Email = :email",
+    UpdateExpression: "set #AttachmentUrl = :attachmentUrl",
     ExpressionAttributeNames: {
-        "#Username": "username",
-        "#Email": "email",
+        "#AttachmentUrl": "attachmentUrl",
     },
     ExpressionAttributeValues: {
-        ":username": profile.username,
-        ":email": profile.email
+        ":attachmentUrl": profile.attachmentUrl,
     }
   }
 
   return await dynamodb.update(params).promise().then(response => {
     return true;
   }, error => {
-    console.log('There is an error updating profile: ', error)
+    console.log('There is an error updating avatar: ', error)
   })
 }
 
-module.exports.updateProfile = updateProfile;
+module.exports.updateAvatar = updateAvatar;

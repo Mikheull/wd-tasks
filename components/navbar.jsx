@@ -100,7 +100,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:flex flex-initial">
+        <div className="flex flex-initial">
           <div className="flex justify-end items-center relative">
             {
               (!user || !user.ID || !verifiedtoken) ?
@@ -119,7 +119,10 @@ const Navbar = () => {
                     <a className="text-white text-sm">App</a>
                   </Link>
                   <Link href="profile" passHref>
-                    <a className="text-white text-sm">Profile</a>
+                    <a className="text-white text-sm flex items-center gap-2">
+                      Profile
+                      <img class="h-6 w-6 rounded-full" src={user.attachmentUrl ? user.attachmentUrl : '../images/avatar.jpg'}/>
+                    </a>
                   </Link>
                   <a className="text-white text-sm cursor-pointer" onClick={logoutHandler}><LogOut height={16} /></a>
                 </div>
