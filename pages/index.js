@@ -7,9 +7,7 @@ import Footer from '../components/footer'
 
 export default function Home() {
   return (
-    <>
-      <img src="/template.png" className={styles.template} />
-      
+    <>      
       <div className="bg-gray-900 w-full px-6 mx-auto">
         <Head>
           <title>Create Next App</title>
